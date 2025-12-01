@@ -1,0 +1,16 @@
+INFO: Solving equation: 1x^2 + 2x + 3 = 0
+DEBUG: Discriminant: -8
+WARNING: Discriminant < 0: no real roots
+DEBUG: Discriminant: -8
+WARNING: Discriminant < 0: no real roots
+DEBUG: Discriminant: -8
+WARNING: Discriminant < 0: no real roots
+DEBUG: Discriminant: -8
+WARNING: Discriminant < 0: no real roots
+DEBUG: Discriminant: -8
+WARNING: Discriminant < 0: no real roots
+DEBUG: Discriminant: 1
+INFO: 1st root = 1.5, 2nd root = 1.0
+ERROR: Exception in solve_quadratic: TypeError: Parameter 'a' must be a number, got: qwe
+ERROR: Exception in solve_quadratic: TypeError: Parameter 'a' must be a number, got: qwe
+CRITICAL: Exception in solve_quadratic: ValueError: Coefficient 'a' cannot be zero

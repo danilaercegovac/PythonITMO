@@ -1,0 +1,1058 @@
+2025-11-29 23:13:26,014 - currency_file - INFO - INFO: Calling get_currencies(['qqq', 'AZN', 'DZD'])
+2025-11-29 23:13:26,433 - currency_file - INFO - INFO: get_currencies returned {'qqq': "Код валюты 'qqq' не найден.", 'AZN': '46,0167', 'DZD': '60,0328'}
+2025-11-30 09:36:29,229 - currency_file - WARNING - INFO: Calling get_currencies(['qqq', 'AZN', 'DZD'])
+2025-11-30 09:36:29,638 - currency_file - INFO - INFO: get_currencies returned {'qqq': "Код валюты 'qqq' не найден.", 'AZN': '46,0167', 'DZD': '60,0328'}
+2025-11-30 09:36:44,611 - currency_file - INFO - INFO: Calling get_currencies(['qqq', 'AZN', 'DZD'])
+2025-11-30 09:36:45,058 - currency_file - INFO - INFO: get_currencies returned {'qqq': "Код валюты 'qqq' не найден.", 'AZN': '46,0167', 'DZD': '60,0328'}
+2025-11-30 09:38:51,623 - currency_file - INFO - INFO: Calling get_currencies(['qqq', 'AZN', 'DZD'])
+2025-11-30 09:38:51,709 - currency_file - ERROR - ERROR: Exception in get_currencies: RequestException: ConnectionError
+Traceback (most recent call last):
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\urllib3\connection.py", line 198, in _new_conn
+    sock = connection.create_connection(
+        (self._dns_host, self.port),
+    ...<2 lines>...
+        socket_options=self.socket_options,
+    )
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\urllib3\util\connection.py", line 60, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+               ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\socket.py", line 975, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\urllib3\connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+        conn,
+    ...<10 lines>...
+        **response_kw,
+    )
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\urllib3\connectionpool.py", line 488, in _make_request
+    raise new_e
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\urllib3\connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\urllib3\connectionpool.py", line 1093, in _validate_conn
+    conn.connect()
+    ~~~~~~~~~~~~^^
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\urllib3\connection.py", line 753, in connect
+    self.sock = sock = self._new_conn()
+                       ~~~~~~~~~~~~~~^^
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\urllib3\connection.py", line 205, in _new_conn
+    raise NameResolutionError(self.host, self, e) from e
+urllib3.exceptions.NameResolutionError: <urllib3.connection.HTTPSConnection object at 0x000001B8936CE270>: Failed to resolve 'ww.cbr.ru' ([Errno 11001] getaddrinfo failed)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\requests\adapters.py", line 644, in send
+    resp = conn.urlopen(
+        method=request.method,
+    ...<9 lines>...
+        chunked=chunked,
+    )
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\urllib3\connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+        method, url, error=new_e, _pool=self, _stacktrace=sys.exc_info()[2]
+    )
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\urllib3\util\retry.py", line 519, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='ww.cbr.ru', port=443): Max retries exceeded with url: /scripts/XML_daily.asp (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000001B8936CE270>: Failed to resolve 'ww.cbr.ru' ([Errno 11001] getaddrinfo failed)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Projects\Python\7LPpython.py", line 101, in get_currencies
+    response = requests.get(url, timeout=10)
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\requests\api.py", line 73, in get
+    return request("get", url, params=params, **kwargs)
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\requests\adapters.py", line 677, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='ww.cbr.ru', port=443): Max retries exceeded with url: /scripts/XML_daily.asp (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000001B8936CE270>: Failed to resolve 'ww.cbr.ru' ([Errno 11001] getaddrinfo failed)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Projects\Python\7LPpython.py", line 47, in wrapper
+    result = func_to_decorate(*args, **kwargs)
+  File "c:\Projects\Python\7LPpython.py", line 105, in get_currencies
+    raise requests.exceptions.RequestException("ConnectionError")
+requests.exceptions.RequestException: ConnectionError
+
+2025-11-30 10:47:45,530 - currency_file - INFO - INFO: Calling get_currencies(['qqq', 'AZN', 'DZD'])
+2025-11-30 10:47:45,795 - currency_file - ERROR - ERROR: Exception in get_currencies: ConnectionError: ConnectionError
+Traceback (most recent call last):
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\urllib3\connection.py", line 198, in _new_conn
+    sock = connection.create_connection(
+        (self._dns_host, self.port),
+    ...<2 lines>...
+        socket_options=self.socket_options,
+    )
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\urllib3\util\connection.py", line 60, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+               ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\socket.py", line 975, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\urllib3\connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+        conn,
+    ...<10 lines>...
+        **response_kw,
+    )
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\urllib3\connectionpool.py", line 488, in _make_request
+    raise new_e
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\urllib3\connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\urllib3\connectionpool.py", line 1093, in _validate_conn
+    conn.connect()
+    ~~~~~~~~~~~~^^
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\urllib3\connection.py", line 753, in connect
+    self.sock = sock = self._new_conn()
+                       ~~~~~~~~~~~~~~^^
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\urllib3\connection.py", line 205, in _new_conn
+    raise NameResolutionError(self.host, self, e) from e
+urllib3.exceptions.NameResolutionError: <urllib3.connection.HTTPSConnection object at 0x0000017B10C7E270>: Failed to resolve 'ww.cbr.ru' ([Errno 11001] getaddrinfo failed)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\requests\adapters.py", line 644, in send
+    resp = conn.urlopen(
+        method=request.method,
+    ...<9 lines>...
+        chunked=chunked,
+    )
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\urllib3\connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+        method, url, error=new_e, _pool=self, _stacktrace=sys.exc_info()[2]
+    )
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\urllib3\util\retry.py", line 519, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='ww.cbr.ru', port=443): Max retries exceeded with url: /scripts/XML_daily.asp (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x0000017B10C7E270>: Failed to resolve 'ww.cbr.ru' ([Errno 11001] getaddrinfo failed)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Projects\Python\7LPpython Currency.py", line 101, in get_currencies
+    response = requests.get(url, timeout=10)
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\requests\api.py", line 73, in get
+    return request("get", url, params=params, **kwargs)
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\requests\adapters.py", line 677, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='ww.cbr.ru', port=443): Max retries exceeded with url: /scripts/XML_daily.asp (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x0000017B10C7E270>: Failed to resolve 'ww.cbr.ru' ([Errno 11001] getaddrinfo failed)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Projects\Python\7LPpython Currency.py", line 47, in wrapper
+    result = func_to_decorate(*args, **kwargs)
+  File "c:\Projects\Python\7LPpython Currency.py", line 105, in get_currencies
+    raise requests.exceptions.ConnectionError("ConnectionError")
+requests.exceptions.ConnectionError: ConnectionError
+
+2025-11-30 18:15:39,373 - currency_file - INFO - INFO: Calling get_currencies(['qqq', 'AZN', 'DZD'])
+2025-11-30 18:15:40,007 - currency_file - INFO - INFO: get_currencies returned {'qqq': "Код валюты 'qqq' не найден.", 'AZN': '46,0167', 'DZD': '60,0328'}
+2025-12-01 08:23:32,911 - currency_file - INFO - INFO: Calling get_currencies(['qqq', 'AZN', 'DZD'])
+2025-12-01 08:23:43,511 - currency_file - ERROR - ERROR: Exception in get_currencies: ConnectionError: Ошибка при запросе к API: HTTPSConnectionPool(host='www.cbr.ru', port=443): Read timed out. (read timeout=10)
+Traceback (most recent call last):
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\urllib3\connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\urllib3\connectionpool.py", line 1093, in _validate_conn
+    conn.connect()
+    ~~~~~~~~~~~~^^
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\urllib3\connection.py", line 790, in connect
+    sock_and_verified = _ssl_wrap_socket_and_match_hostname(
+        sock=sock,
+    ...<14 lines>...
+        assert_fingerprint=self.assert_fingerprint,
+    )
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\urllib3\connection.py", line 969, in _ssl_wrap_socket_and_match_hostname
+    ssl_sock = ssl_wrap_socket(
+        sock=sock,
+    ...<8 lines>...
+        tls_in_tls=tls_in_tls,
+    )
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\urllib3\util\ssl_.py", line 480, in ssl_wrap_socket
+    ssl_sock = _ssl_wrap_socket_impl(sock, context, tls_in_tls, server_hostname)
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\urllib3\util\ssl_.py", line 524, in _ssl_wrap_socket_impl
+    return ssl_context.wrap_socket(sock, server_hostname=server_hostname)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\ssl.py", line 455, in wrap_socket
+    return self.sslsocket_class._create(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        sock=sock,
+        ^^^^^^^^^^
+    ...<5 lines>...
+        session=session
+        ^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\ssl.py", line 1076, in _create
+    self.do_handshake()
+    ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\ssl.py", line 1372, in do_handshake
+    self._sslobj.do_handshake()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+TimeoutError: _ssl.c:1001: The handshake operation timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\requests\adapters.py", line 644, in send
+    resp = conn.urlopen(
+        method=request.method,
+    ...<9 lines>...
+        chunked=chunked,
+    )
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\urllib3\connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+        method, url, error=new_e, _pool=self, _stacktrace=sys.exc_info()[2]
+    )
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\urllib3\util\retry.py", line 474, in increment
+    raise reraise(type(error), error, _stacktrace)
+          ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\urllib3\util\util.py", line 39, in reraise
+    raise value
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\urllib3\connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+        conn,
+    ...<10 lines>...
+        **response_kw,
+    )
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\urllib3\connectionpool.py", line 488, in _make_request
+    raise new_e
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\urllib3\connectionpool.py", line 466, in _make_request
+    self._raise_timeout(err=e, url=url, timeout_value=conn.timeout)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\urllib3\connectionpool.py", line 367, in _raise_timeout
+    raise ReadTimeoutError(
+        self, url, f"Read timed out. (read timeout={timeout_value})"
+    ) from err
+urllib3.exceptions.ReadTimeoutError: HTTPSConnectionPool(host='www.cbr.ru', port=443): Read timed out. (read timeout=10)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Projects\Python\LP7pythonCurrency.py", line 142, in get_currencies
+    response = requests.get(url, timeout=10)
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\requests\api.py", line 73, in get
+    return request("get", url, params=params, **kwargs)
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\requests\adapters.py", line 690, in send
+    raise ReadTimeout(e, request=request)
+requests.exceptions.ReadTimeout: HTTPSConnectionPool(host='www.cbr.ru', port=443): Read timed out. (read timeout=10)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Projects\Python\LP7pythonCurrency.py", line 71, in wrapper
+    result = func_to_decorate(*args, **kwargs)
+  File "c:\Projects\Python\LP7pythonCurrency.py", line 146, in get_currencies
+    raise requests.exceptions.ConnectionError(f"Ошибка при запросе к API: {e}")
+requests.exceptions.ConnectionError: Ошибка при запросе к API: HTTPSConnectionPool(host='www.cbr.ru', port=443): Read timed out. (read timeout=10)
+
+2025-12-01 08:28:34,862 - currency_file - INFO - INFO: Calling get_currencies(['USD'], url='http://localhost:9999/invalid_url')
+2025-12-01 08:28:38,967 - currency_file - ERROR - ERROR: Exception in get_currencies: ConnectionError: Ошибка при запросе к API: HTTPConnectionPool(host='localhost', port=9999): Max retries exceeded with url: /invalid_url (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x00000239F7C90590>: Failed to establish a new connection: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение'))
+Traceback (most recent call last):
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\urllib3\connection.py", line 198, in _new_conn
+    sock = connection.create_connection(
+        (self._dns_host, self.port),
+    ...<2 lines>...
+        socket_options=self.socket_options,
+    )
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\urllib3\util\connection.py", line 85, in create_connection
+    raise err
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\urllib3\util\connection.py", line 73, in create_connection
+    sock.connect(sa)
+    ~~~~~~~~~~~~^^^^
+ConnectionRefusedError: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\urllib3\connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+        conn,
+    ...<10 lines>...
+        **response_kw,
+    )
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\urllib3\connectionpool.py", line 493, in _make_request
+    conn.request(
+    ~~~~~~~~~~~~^
+        method,
+        ^^^^^^^
+    ...<6 lines>...
+        enforce_content_length=enforce_content_length,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\urllib3\connection.py", line 494, in request
+    self.endheaders()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\http\client.py", line 1331, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\http\client.py", line 1091, in _send_output
+    self.send(msg)
+    ~~~~~~~~~^^^^^
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\http\client.py", line 1035, in send
+    self.connect()
+    ~~~~~~~~~~~~^^
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\urllib3\connection.py", line 325, in connect
+    self.sock = self._new_conn()
+                ~~~~~~~~~~~~~~^^
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\urllib3\connection.py", line 213, in _new_conn
+    raise NewConnectionError(
+        self, f"Failed to establish a new connection: {e}"
+    ) from e
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x00000239F7C90590>: Failed to establish a new connection: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\requests\adapters.py", line 644, in send
+    resp = conn.urlopen(
+        method=request.method,
+    ...<9 lines>...
+        chunked=chunked,
+    )
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\urllib3\connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+        method, url, error=new_e, _pool=self, _stacktrace=sys.exc_info()[2]
+    )
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\urllib3\util\retry.py", line 519, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='localhost', port=9999): Max retries exceeded with url: /invalid_url (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x00000239F7C90590>: Failed to establish a new connection: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Projects\Python\LP7pythonCurrency.py", line 142, in get_currencies
+    response = requests.get(url, timeout=10)
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\requests\api.py", line 73, in get
+    return request("get", url, params=params, **kwargs)
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\requests\adapters.py", line 677, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='localhost', port=9999): Max retries exceeded with url: /invalid_url (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x00000239F7C90590>: Failed to establish a new connection: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Projects\Python\LP7pythonCurrency.py", line 71, in wrapper
+    result = func_to_decorate(*args, **kwargs)
+  File "c:\Projects\Python\LP7pythonCurrency.py", line 146, in get_currencies
+    raise requests.exceptions.ConnectionError(f"Ошибка при запросе к API: {e}")
+requests.exceptions.ConnectionError: Ошибка при запросе к API: HTTPConnectionPool(host='localhost', port=9999): Max retries exceeded with url: /invalid_url (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x00000239F7C90590>: Failed to establish a new connection: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение'))
+
+2025-12-01 08:28:38,971 - currency_file - INFO - INFO: Calling get_currencies(['USD'])
+2025-12-01 08:28:39,624 - currency_file - INFO - INFO: get_currencies returned {'USD': '78,2284'}
+2025-12-01 08:28:39,624 - currency_file - INFO - INFO: Calling get_currencies(['ZZZ'])
+2025-12-01 08:28:40,193 - currency_file - INFO - INFO: get_currencies returned {'ZZZ': "Код валюты 'ZZZ' не найден."}
+2025-12-01 08:30:41,806 - currency_file - INFO - INFO: Calling get_currencies(['USD'], url='http://localhost:9999/invalid_url')
+2025-12-01 08:30:45,912 - currency_file - ERROR - ERROR: Exception in get_currencies: ConnectionError: Ошибка при запросе к API: HTTPConnectionPool(host='localhost', port=9999): Max retries exceeded with url: /invalid_url (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x00000245FD140590>: Failed to establish a new connection: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение'))
+Traceback (most recent call last):
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\urllib3\connection.py", line 198, in _new_conn
+    sock = connection.create_connection(
+        (self._dns_host, self.port),
+    ...<2 lines>...
+        socket_options=self.socket_options,
+    )
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\urllib3\util\connection.py", line 85, in create_connection
+    raise err
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\urllib3\util\connection.py", line 73, in create_connection
+    sock.connect(sa)
+    ~~~~~~~~~~~~^^^^
+ConnectionRefusedError: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\urllib3\connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+        conn,
+    ...<10 lines>...
+        **response_kw,
+    )
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\urllib3\connectionpool.py", line 493, in _make_request
+    conn.request(
+    ~~~~~~~~~~~~^
+        method,
+        ^^^^^^^
+    ...<6 lines>...
+        enforce_content_length=enforce_content_length,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\urllib3\connection.py", line 494, in request
+    self.endheaders()
+    ~~~~~~~~~~~~~~~^^
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\http\client.py", line 1331, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\http\client.py", line 1091, in _send_output
+    self.send(msg)
+    ~~~~~~~~~^^^^^
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\http\client.py", line 1035, in send
+    self.connect()
+    ~~~~~~~~~~~~^^
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\urllib3\connection.py", line 325, in connect
+    self.sock = self._new_conn()
+                ~~~~~~~~~~~~~~^^
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\urllib3\connection.py", line 213, in _new_conn
+    raise NewConnectionError(
+        self, f"Failed to establish a new connection: {e}"
+    ) from e
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x00000245FD140590>: Failed to establish a new connection: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\requests\adapters.py", line 644, in send
+    resp = conn.urlopen(
+        method=request.method,
+    ...<9 lines>...
+        chunked=chunked,
+    )
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\urllib3\connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+        method, url, error=new_e, _pool=self, _stacktrace=sys.exc_info()[2]
+    )
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\urllib3\util\retry.py", line 519, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='localhost', port=9999): Max retries exceeded with url: /invalid_url (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x00000245FD140590>: Failed to establish a new connection: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Projects\Python\LP7pythonCurrency.py", line 142, in get_currencies
+    response = requests.get(url, timeout=10)
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\requests\api.py", line 73, in get
+    return request("get", url, params=params, **kwargs)
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\requests\adapters.py", line 677, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='localhost', port=9999): Max retries exceeded with url: /invalid_url (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x00000245FD140590>: Failed to establish a new connection: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Projects\Python\LP7pythonCurrency.py", line 71, in wrapper
+    result = func_to_decorate(*args, **kwargs)
+  File "c:\Projects\Python\LP7pythonCurrency.py", line 146, in get_currencies
+    raise requests.exceptions.ConnectionError(f"Ошибка при запросе к API: {e}")
+requests.exceptions.ConnectionError: Ошибка при запросе к API: HTTPConnectionPool(host='localhost', port=9999): Max retries exceeded with url: /invalid_url (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x00000245FD140590>: Failed to establish a new connection: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение'))
+
+2025-12-01 08:30:45,915 - currency_file - INFO - INFO: Calling get_currencies(['USD'])
+2025-12-01 08:30:46,444 - currency_file - INFO - INFO: get_currencies returned {'USD': '78,2284'}
+2025-12-01 08:30:46,445 - currency_file - INFO - INFO: Calling get_currencies(['ZZZ'])
+2025-12-01 08:30:56,787 - currency_file - ERROR - ERROR: Exception in get_currencies: ConnectionError: Ошибка при запросе к API: HTTPSConnectionPool(host='www.cbr.ru', port=443): Read timed out. (read timeout=10)
+Traceback (most recent call last):
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\urllib3\connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\urllib3\connectionpool.py", line 1093, in _validate_conn
+    conn.connect()
+    ~~~~~~~~~~~~^^
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\urllib3\connection.py", line 790, in connect
+    sock_and_verified = _ssl_wrap_socket_and_match_hostname(
+        sock=sock,
+    ...<14 lines>...
+        assert_fingerprint=self.assert_fingerprint,
+    )
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\urllib3\connection.py", line 969, in _ssl_wrap_socket_and_match_hostname
+    ssl_sock = ssl_wrap_socket(
+        sock=sock,
+    ...<8 lines>...
+        tls_in_tls=tls_in_tls,
+    )
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\urllib3\util\ssl_.py", line 480, in ssl_wrap_socket
+    ssl_sock = _ssl_wrap_socket_impl(sock, context, tls_in_tls, server_hostname)
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\urllib3\util\ssl_.py", line 524, in _ssl_wrap_socket_impl
+    return ssl_context.wrap_socket(sock, server_hostname=server_hostname)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\ssl.py", line 455, in wrap_socket
+    return self.sslsocket_class._create(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        sock=sock,
+        ^^^^^^^^^^
+    ...<5 lines>...
+        session=session
+        ^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\ssl.py", line 1076, in _create
+    self.do_handshake()
+    ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\ssl.py", line 1372, in do_handshake
+    self._sslobj.do_handshake()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+TimeoutError: _ssl.c:1001: The handshake operation timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\requests\adapters.py", line 644, in send
+    resp = conn.urlopen(
+        method=request.method,
+    ...<9 lines>...
+        chunked=chunked,
+    )
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\urllib3\connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+        method, url, error=new_e, _pool=self, _stacktrace=sys.exc_info()[2]
+    )
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\urllib3\util\retry.py", line 474, in increment
+    raise reraise(type(error), error, _stacktrace)
+          ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\urllib3\util\util.py", line 39, in reraise
+    raise value
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\urllib3\connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+        conn,
+    ...<10 lines>...
+        **response_kw,
+    )
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\urllib3\connectionpool.py", line 488, in _make_request
+    raise new_e
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\urllib3\connectionpool.py", line 466, in _make_request
+    self._raise_timeout(err=e, url=url, timeout_value=conn.timeout)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\urllib3\connectionpool.py", line 367, in _raise_timeout
+    raise ReadTimeoutError(
+        self, url, f"Read timed out. (read timeout={timeout_value})"
+    ) from err
+urllib3.exceptions.ReadTimeoutError: HTTPSConnectionPool(host='www.cbr.ru', port=443): Read timed out. (read timeout=10)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Projects\Python\LP7pythonCurrency.py", line 142, in get_currencies
+    response = requests.get(url, timeout=10)
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\requests\api.py", line 73, in get
+    return request("get", url, params=params, **kwargs)
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\requests\adapters.py", line 690, in send
+    raise ReadTimeout(e, request=request)
+requests.exceptions.ReadTimeout: HTTPSConnectionPool(host='www.cbr.ru', port=443): Read timed out. (read timeout=10)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Projects\Python\LP7pythonCurrency.py", line 71, in wrapper
+    result = func_to_decorate(*args, **kwargs)
+  File "c:\Projects\Python\LP7pythonCurrency.py", line 146, in get_currencies
+    raise requests.exceptions.ConnectionError(f"Ошибка при запросе к API: {e}")
+requests.exceptions.ConnectionError: Ошибка при запросе к API: HTTPSConnectionPool(host='www.cbr.ru', port=443): Read timed out. (read timeout=10)
+
+2025-12-01 08:49:23,796 - currency_file - INFO - INFO: Calling get_currencies(['USD'])
+2025-12-01 08:49:23,805 - currency_file - ERROR - ERROR: Exception in get_currencies: ConnectionError: Ошибка при запросе к API: Ошибка при запросе к API
+Traceback (most recent call last):
+  File "c:\Projects\Python\LP7pythonCurrency.py", line 142, in get_currencies
+    response = requests.get(url, timeout=10)
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\unittest\mock.py", line 1167, in __call__
+    return self._mock_call(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\unittest\mock.py", line 1171, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\unittest\mock.py", line 1226, in _execute_mock_call
+    raise effect
+requests.exceptions.ConnectionError: Ошибка при запросе к API
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Projects\Python\LP7pythonCurrency.py", line 71, in wrapper
+    result = func_to_decorate(*args, **kwargs)
+  File "c:\Projects\Python\LP7pythonCurrency.py", line 146, in get_currencies
+    raise requests.exceptions.ConnectionError(f"Ошибка при запросе к API: {e}")
+requests.exceptions.ConnectionError: Ошибка при запросе к API: Ошибка при запросе к API
+
+2025-12-01 08:49:23,809 - currency_file - INFO - INFO: Calling get_currencies(['USD', 'EUR'])
+2025-12-01 08:49:23,812 - currency_file - INFO - INFO: get_currencies returned {'USD': '93,52', 'EUR': '101,20'}
+2025-12-01 08:49:23,812 - currency_file - INFO - INFO: Calling get_currencies(['ZZZ'])
+2025-12-01 08:49:23,819 - currency_file - INFO - INFO: get_currencies returned {'ZZZ': "Код валюты 'ZZZ' не найден."}
+2025-12-01 09:17:50,399 - currency_file - INFO - INFO: Calling get_currencies(['USD'], url='https://invalid')
+2025-12-01 09:17:53,133 - currency_file - ERROR - ERROR: Exception in get_currencies: ConnectionError: Ошибка при запросе к API: HTTPSConnectionPool(host='invalid', port=443): Max retries exceeded with url: / (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000001A3FB24B0E0>: Failed to resolve 'invalid' ([Errno 11001] getaddrinfo failed)"))
+Traceback (most recent call last):
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\urllib3\connection.py", line 198, in _new_conn
+    sock = connection.create_connection(
+        (self._dns_host, self.port),
+    ...<2 lines>...
+        socket_options=self.socket_options,
+    )
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\urllib3\util\connection.py", line 60, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+               ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\socket.py", line 975, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\urllib3\connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+        conn,
+    ...<10 lines>...
+        **response_kw,
+    )
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\urllib3\connectionpool.py", line 488, in _make_request
+    raise new_e
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\urllib3\connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\urllib3\connectionpool.py", line 1093, in _validate_conn
+    conn.connect()
+    ~~~~~~~~~~~~^^
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\urllib3\connection.py", line 753, in connect
+    self.sock = sock = self._new_conn()
+                       ~~~~~~~~~~~~~~^^
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\urllib3\connection.py", line 205, in _new_conn
+    raise NameResolutionError(self.host, self, e) from e
+urllib3.exceptions.NameResolutionError: <urllib3.connection.HTTPSConnection object at 0x000001A3FB24B0E0>: Failed to resolve 'invalid' ([Errno 11001] getaddrinfo failed)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\requests\adapters.py", line 644, in send
+    resp = conn.urlopen(
+        method=request.method,
+    ...<9 lines>...
+        chunked=chunked,
+    )
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\urllib3\connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+        method, url, error=new_e, _pool=self, _stacktrace=sys.exc_info()[2]
+    )
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\urllib3\util\retry.py", line 519, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='invalid', port=443): Max retries exceeded with url: / (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000001A3FB24B0E0>: Failed to resolve 'invalid' ([Errno 11001] getaddrinfo failed)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Projects\Python\LP7pythonCurrency.py", line 142, in get_currencies
+    response = requests.get(url, timeout=10)
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\requests\api.py", line 73, in get
+    return request("get", url, params=params, **kwargs)
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\requests\adapters.py", line 677, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='invalid', port=443): Max retries exceeded with url: / (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000001A3FB24B0E0>: Failed to resolve 'invalid' ([Errno 11001] getaddrinfo failed)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Projects\Python\LP7pythonCurrency.py", line 71, in wrapper
+    result = func_to_decorate(*args, **kwargs)
+  File "c:\Projects\Python\LP7pythonCurrency.py", line 146, in get_currencies
+    raise requests.exceptions.ConnectionError(f"Ошибка при запросе к API: {e}")
+requests.exceptions.ConnectionError: Ошибка при запросе к API: HTTPSConnectionPool(host='invalid', port=443): Max retries exceeded with url: / (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000001A3FB24B0E0>: Failed to resolve 'invalid' ([Errno 11001] getaddrinfo failed)"))
+
+2025-12-01 09:23:45,689 - currency_file - INFO - INFO: Calling get_currencies(['USD'], url='https://invalid')
+2025-12-01 09:23:48,395 - currency_file - ERROR - ERROR: Exception in get_currencies: ConnectionError: Ошибка при запросе к API: HTTPSConnectionPool(host='invalid', port=443): Max retries exceeded with url: / (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000001637AF4EF90>: Failed to resolve 'invalid' ([Errno 11001] getaddrinfo failed)"))
+Traceback (most recent call last):
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\urllib3\connection.py", line 198, in _new_conn
+    sock = connection.create_connection(
+        (self._dns_host, self.port),
+    ...<2 lines>...
+        socket_options=self.socket_options,
+    )
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\urllib3\util\connection.py", line 60, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+               ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\socket.py", line 975, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\urllib3\connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+        conn,
+    ...<10 lines>...
+        **response_kw,
+    )
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\urllib3\connectionpool.py", line 488, in _make_request
+    raise new_e
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\urllib3\connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\urllib3\connectionpool.py", line 1093, in _validate_conn
+    conn.connect()
+    ~~~~~~~~~~~~^^
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\urllib3\connection.py", line 753, in connect
+    self.sock = sock = self._new_conn()
+                       ~~~~~~~~~~~~~~^^
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\urllib3\connection.py", line 205, in _new_conn
+    raise NameResolutionError(self.host, self, e) from e
+urllib3.exceptions.NameResolutionError: <urllib3.connection.HTTPSConnection object at 0x000001637AF4EF90>: Failed to resolve 'invalid' ([Errno 11001] getaddrinfo failed)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\requests\adapters.py", line 644, in send
+    resp = conn.urlopen(
+        method=request.method,
+    ...<9 lines>...
+        chunked=chunked,
+    )
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\urllib3\connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+        method, url, error=new_e, _pool=self, _stacktrace=sys.exc_info()[2]
+    )
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\urllib3\util\retry.py", line 519, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='invalid', port=443): Max retries exceeded with url: / (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000001637AF4EF90>: Failed to resolve 'invalid' ([Errno 11001] getaddrinfo failed)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Projects\Python\LP7pythonCurrency.py", line 142, in get_currencies
+    response = requests.get(url, timeout=10)
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\requests\api.py", line 73, in get
+    return request("get", url, params=params, **kwargs)
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\requests\adapters.py", line 677, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='invalid', port=443): Max retries exceeded with url: / (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000001637AF4EF90>: Failed to resolve 'invalid' ([Errno 11001] getaddrinfo failed)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Projects\Python\LP7pythonCurrency.py", line 71, in wrapper
+    result = func_to_decorate(*args, **kwargs)
+  File "c:\Projects\Python\LP7pythonCurrency.py", line 146, in get_currencies
+    raise requests.exceptions.ConnectionError(f"Ошибка при запросе к API: {e}")
+requests.exceptions.ConnectionError: Ошибка при запросе к API: HTTPSConnectionPool(host='invalid', port=443): Max retries exceeded with url: / (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000001637AF4EF90>: Failed to resolve 'invalid' ([Errno 11001] getaddrinfo failed)"))
+
+2025-12-01 09:24:25,408 - currency_file - INFO - INFO: Calling get_currencies(['USD'], url='https://invalid')
+2025-12-01 09:24:28,185 - currency_file - ERROR - ERROR: Exception in get_currencies: ConnectionError: Ошибка при запросе к API: HTTPSConnectionPool(host='invalid', port=443): Max retries exceeded with url: / (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x0000023BFAF7EF90>: Failed to resolve 'invalid' ([Errno 11001] getaddrinfo failed)"))
+Traceback (most recent call last):
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\urllib3\connection.py", line 198, in _new_conn
+    sock = connection.create_connection(
+        (self._dns_host, self.port),
+    ...<2 lines>...
+        socket_options=self.socket_options,
+    )
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\urllib3\util\connection.py", line 60, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+               ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\socket.py", line 975, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\urllib3\connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+        conn,
+    ...<10 lines>...
+        **response_kw,
+    )
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\urllib3\connectionpool.py", line 488, in _make_request
+    raise new_e
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\urllib3\connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\urllib3\connectionpool.py", line 1093, in _validate_conn
+    conn.connect()
+    ~~~~~~~~~~~~^^
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\urllib3\connection.py", line 753, in connect
+    self.sock = sock = self._new_conn()
+                       ~~~~~~~~~~~~~~^^
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\urllib3\connection.py", line 205, in _new_conn
+    raise NameResolutionError(self.host, self, e) from e
+urllib3.exceptions.NameResolutionError: <urllib3.connection.HTTPSConnection object at 0x0000023BFAF7EF90>: Failed to resolve 'invalid' ([Errno 11001] getaddrinfo failed)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\requests\adapters.py", line 644, in send
+    resp = conn.urlopen(
+        method=request.method,
+    ...<9 lines>...
+        chunked=chunked,
+    )
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\urllib3\connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+        method, url, error=new_e, _pool=self, _stacktrace=sys.exc_info()[2]
+    )
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\urllib3\util\retry.py", line 519, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='invalid', port=443): Max retries exceeded with url: / (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x0000023BFAF7EF90>: Failed to resolve 'invalid' ([Errno 11001] getaddrinfo failed)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Projects\Python\LP7pythonCurrency.py", line 142, in get_currencies
+    response = requests.get(url, timeout=10)
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\requests\api.py", line 73, in get
+    return request("get", url, params=params, **kwargs)
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\requests\adapters.py", line 677, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='invalid', port=443): Max retries exceeded with url: / (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x0000023BFAF7EF90>: Failed to resolve 'invalid' ([Errno 11001] getaddrinfo failed)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Projects\Python\LP7pythonCurrency.py", line 71, in wrapper
+    result = func_to_decorate(*args, **kwargs)
+  File "c:\Projects\Python\LP7pythonCurrency.py", line 146, in get_currencies
+    raise requests.exceptions.ConnectionError(f"Ошибка при запросе к API: {e}")
+requests.exceptions.ConnectionError: Ошибка при запросе к API: HTTPSConnectionPool(host='invalid', port=443): Max retries exceeded with url: / (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x0000023BFAF7EF90>: Failed to resolve 'invalid' ([Errno 11001] getaddrinfo failed)"))
+
+2025-12-01 09:24:45,329 - currency_file - INFO - INFO: Calling get_currencies(['USD'], url='https://invalid')
+2025-12-01 09:24:48,033 - currency_file - ERROR - ERROR: Exception in get_currencies: ConnectionError: Ошибка при запросе к API: HTTPSConnectionPool(host='invalid', port=443): Max retries exceeded with url: / (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x0000016D3962EF90>: Failed to resolve 'invalid' ([Errno 11001] getaddrinfo failed)"))
+Traceback (most recent call last):
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\urllib3\connection.py", line 198, in _new_conn
+    sock = connection.create_connection(
+        (self._dns_host, self.port),
+    ...<2 lines>...
+        socket_options=self.socket_options,
+    )
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\urllib3\util\connection.py", line 60, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+               ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\socket.py", line 975, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\urllib3\connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+        conn,
+    ...<10 lines>...
+        **response_kw,
+    )
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\urllib3\connectionpool.py", line 488, in _make_request
+    raise new_e
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\urllib3\connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\urllib3\connectionpool.py", line 1093, in _validate_conn
+    conn.connect()
+    ~~~~~~~~~~~~^^
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\urllib3\connection.py", line 753, in connect
+    self.sock = sock = self._new_conn()
+                       ~~~~~~~~~~~~~~^^
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\urllib3\connection.py", line 205, in _new_conn
+    raise NameResolutionError(self.host, self, e) from e
+urllib3.exceptions.NameResolutionError: <urllib3.connection.HTTPSConnection object at 0x0000016D3962EF90>: Failed to resolve 'invalid' ([Errno 11001] getaddrinfo failed)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\requests\adapters.py", line 644, in send
+    resp = conn.urlopen(
+        method=request.method,
+    ...<9 lines>...
+        chunked=chunked,
+    )
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\urllib3\connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+        method, url, error=new_e, _pool=self, _stacktrace=sys.exc_info()[2]
+    )
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\urllib3\util\retry.py", line 519, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='invalid', port=443): Max retries exceeded with url: / (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x0000016D3962EF90>: Failed to resolve 'invalid' ([Errno 11001] getaddrinfo failed)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Projects\Python\LP7pythonCurrency.py", line 142, in get_currencies
+    response = requests.get(url, timeout=10)
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\requests\api.py", line 73, in get
+    return request("get", url, params=params, **kwargs)
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\requests\adapters.py", line 677, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='invalid', port=443): Max retries exceeded with url: / (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x0000016D3962EF90>: Failed to resolve 'invalid' ([Errno 11001] getaddrinfo failed)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Projects\Python\LP7pythonCurrency.py", line 71, in wrapper
+    result = func_to_decorate(*args, **kwargs)
+  File "c:\Projects\Python\LP7pythonCurrency.py", line 146, in get_currencies
+    raise requests.exceptions.ConnectionError(f"Ошибка при запросе к API: {e}")
+requests.exceptions.ConnectionError: Ошибка при запросе к API: HTTPSConnectionPool(host='invalid', port=443): Max retries exceeded with url: / (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x0000016D3962EF90>: Failed to resolve 'invalid' ([Errno 11001] getaddrinfo failed)"))
+
+2025-12-01 09:27:36,398 - currency_file - INFO - INFO: Calling get_currencies(['USD'], url='https://invalid')
+2025-12-01 09:27:39,102 - currency_file - ERROR - ERROR: Exception in get_currencies: ConnectionError: Ошибка при запросе к API: HTTPSConnectionPool(host='invalid', port=443): Max retries exceeded with url: / (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x0000024C588EECF0>: Failed to resolve 'invalid' ([Errno 11001] getaddrinfo failed)"))
+Traceback (most recent call last):
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\urllib3\connection.py", line 198, in _new_conn
+    sock = connection.create_connection(
+        (self._dns_host, self.port),
+    ...<2 lines>...
+        socket_options=self.socket_options,
+    )
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\urllib3\util\connection.py", line 60, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+               ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\socket.py", line 975, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\urllib3\connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+        conn,
+    ...<10 lines>...
+        **response_kw,
+    )
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\urllib3\connectionpool.py", line 488, in _make_request
+    raise new_e
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\urllib3\connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\urllib3\connectionpool.py", line 1093, in _validate_conn
+    conn.connect()
+    ~~~~~~~~~~~~^^
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\urllib3\connection.py", line 753, in connect
+    self.sock = sock = self._new_conn()
+                       ~~~~~~~~~~~~~~^^
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\urllib3\connection.py", line 205, in _new_conn
+    raise NameResolutionError(self.host, self, e) from e
+urllib3.exceptions.NameResolutionError: <urllib3.connection.HTTPSConnection object at 0x0000024C588EECF0>: Failed to resolve 'invalid' ([Errno 11001] getaddrinfo failed)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\requests\adapters.py", line 644, in send
+    resp = conn.urlopen(
+        method=request.method,
+    ...<9 lines>...
+        chunked=chunked,
+    )
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\urllib3\connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+        method, url, error=new_e, _pool=self, _stacktrace=sys.exc_info()[2]
+    )
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\urllib3\util\retry.py", line 519, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='invalid', port=443): Max retries exceeded with url: / (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x0000024C588EECF0>: Failed to resolve 'invalid' ([Errno 11001] getaddrinfo failed)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Projects\Python\LP7pythonCurrency.py", line 142, in get_currencies
+    response = requests.get(url, timeout=10)
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\requests\api.py", line 73, in get
+    return request("get", url, params=params, **kwargs)
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\requests\api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "C:\Users\Данила Эрцеговац\AppData\Local\Programs\Python\Python313\Lib\site-packages\requests\adapters.py", line 677, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='invalid', port=443): Max retries exceeded with url: / (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x0000024C588EECF0>: Failed to resolve 'invalid' ([Errno 11001] getaddrinfo failed)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Projects\Python\LP7pythonCurrency.py", line 71, in wrapper
+    result = func_to_decorate(*args, **kwargs)
+  File "c:\Projects\Python\LP7pythonCurrency.py", line 146, in get_currencies
+    raise requests.exceptions.ConnectionError(f"Ошибка при запросе к API: {e}")
+requests.exceptions.ConnectionError: Ошибка при запросе к API: HTTPSConnectionPool(host='invalid', port=443): Max retries exceeded with url: / (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x0000024C588EECF0>: Failed to resolve 'invalid' ([Errno 11001] getaddrinfo failed)"))
+
