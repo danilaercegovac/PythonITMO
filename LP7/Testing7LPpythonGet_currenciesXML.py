@@ -5,7 +5,7 @@ import requests
 
 class TestGetCurrencies(unittest.TestCase):
 
-    @patch("LP7pythonCurrency.requests.get")
+    @patch("LP7pythonCurrencyXML.requests.get")
     def test_real_values(self, mock_get):
         """Checking correct return of real currency rate."""
 
@@ -30,7 +30,7 @@ class TestGetCurrencies(unittest.TestCase):
         self.assertEqual(result["USD"], "93,52")
         self.assertEqual(result["EUR"], "101,20")
 
-    @patch("LP7pythonCurrency.requests.get")
+    @patch("LP7pythonCurrencyXML.requests.get")
     def test_unknown_currency(self, mock_get):
         """Checking behavior when requesting a non-existent currency."""
 
@@ -41,7 +41,7 @@ class TestGetCurrencies(unittest.TestCase):
         result = get_currencies(["ZZZ"])
         self.assertEqual(result["ZZZ"], "Код валюты 'ZZZ' не найден.")
 
-    @patch("LP7pythonCurrency.requests.get")
+    @patch("LP7pythonCurrencyXML.requests.get")
     def test_connection_error(self, mock_get):
         """Check if ConnectionError is thrown when API is unavailable."""
 
@@ -51,4 +51,5 @@ class TestGetCurrencies(unittest.TestCase):
             get_currencies(["USD"])
 if __name__ == "__main__":
     unittest.main()
+
 
