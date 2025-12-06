@@ -1,6 +1,6 @@
 import unittest
 from unittest.mock import patch
-from LP7pythonCurrency import get_currencies
+from LP7pythonCurrencyXML import get_currencies
 import requests
 
 class TestGetCurrencies(unittest.TestCase):
@@ -51,3 +51,4 @@ class TestGetCurrencies(unittest.TestCase):
             get_currencies(["USD"])
 if __name__ == "__main__":
     unittest.main()
+
