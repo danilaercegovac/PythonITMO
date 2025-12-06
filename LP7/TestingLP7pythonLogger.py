@@ -2,7 +2,7 @@ import unittest
 import io
 import logging
 import requests
-from LP7pythonCurrency import logger, get_currencies
+from LP7pythonCurrencyXML import logger, get_currencies
 
 class TestLoggerAllInOne(unittest.TestCase):
     # Test of Success
@@ -90,3 +90,4 @@ class TestLoggerAllInOne(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
