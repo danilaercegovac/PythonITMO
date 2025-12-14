@@ -1,0 +1,6 @@
+<h2>Курсы валют</h2>
+<ul>
+{% for c in currencies %}
+<li>{{ c.char_code }} — {{ c.value }}</li>
+{% endfor %}
+</ul>
