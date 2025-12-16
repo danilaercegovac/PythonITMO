@@ -1,0 +1,25 @@
+<h2>Валюты</h2>
+<table border="1">
+<tr>
+<th>ID</th>
+<th>NumCode</th>
+<th>CharCode</th>
+<th>Name</th>
+<th>Value</th>
+<th>Nominal</th>
+<th>Действия</th>
+</tr>
+{% for item in currencies %}
+<tr>
+<td>{{ item.id }}</td>
+<td>{{ item.num_code }}</td>
+<td>{{ item.char_code }}</td>
+<td>{{ item.name }}</td>
+<td>{{ item.value }}</td>
+<td>{{ item.nominal }}</td>
+<td>
+<a href="/currency/delete?id={{ item.id }}">Удалить</a>
+</td>
+</tr>
+{% endfor %}
+</table>
