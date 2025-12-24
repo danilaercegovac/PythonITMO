@@ -1,0 +1,26 @@
+C:\Projects\Python\LP10>python -m doctest -v integrate_py.py
+Trying:
+    import math
+Expecting nothing
+ok
+Trying:
+    round(integrate(math.sin, 0.0, math.pi, n_iter=200_000), 6)
+Expecting:
+    2.0
+ok
+Trying:
+    f = lambda x: x*x + 2*x + 1
+Expecting nothing
+ok
+Trying:
+    abs(integrate(f, 0.0, 1.0, n_iter=200_000) - (7/3)) < 1e-4
+Expecting:
+    True
+ok
+1 item had no tests:
+    integrate_py
+1 item passed all tests:
+   4 tests in integrate_py.integrate
+4 tests in 2 items.
+4 passed.
+Test passed.
